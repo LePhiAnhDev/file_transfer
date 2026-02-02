@@ -1,72 +1,274 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
+/* --- GLOBAL STYLES --- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f8f9fa;
+    box-sizing: border-box;
 }
 
-/* HEADER */
-.header {
-  background: #000;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px 50px;
+/* Class tiện ích để căn giữa nội dung trang */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
-.header nav a {
-  color: #fff;
-  margin: 0 10px;
-  text-decoration: none;
+/* --- HEADER --- */
+.header-area {
+    background-color: black;
+    color: white;
+    padding: 15px 0;
 }
 
-.btn {
-  background: none;
-  color: orange;
-  border: 1px solid orange;
-  padding: 8px 15px;
-  cursor: pointer;
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
 
-/* HERO */
-.hero {
-  background: url("assets/hero.jpg") center/cover no-repeat;
-  height: 350px;
-  position: relative;
+.logo img {
+    height: 40px; /* Điều chỉnh lại chút cho cân đối */
+    width: auto;
+    display: block;
 }
 
-.hero-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  text-align: center;
+.menu {
+    list-style: none;
+    display: flex;
+    flex: 1;
+    justify-content: center; /* Căn giữa menu */
+    margin: 0;
+    padding: 0;
 }
 
-/* GALLERY */
-.gallery {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 20px;
-  padding: 40px;
+.menu-item {
+    margin: 0 20px;
 }
 
-.gallery img {
-  width: 100%;
-  border-radius: 10px;
+.menu-item a { 
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    transition: color 0.3s;
 }
 
-.gallery .large {
-  grid-row: span 2;
+.menu-item a:hover {
+    color: orange;
 }
 
-/* FOOTER */
-.footer {
-  background: #333;
-  color: #fff;
-  display: flex;
-  justify-content: space-around;
-  padding: 40px;
+.datlich-btn {
+    text-decoration: none;
+    color: orange;
+    border: 1px solid orange;
+    padding: 8px 20px;
+    transition: all 0.3s;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.datlich-btn:hover {
+    background-color: orange;
+    color: black;
+}
+
+/* --- HERO SECTION (BANNER) --- */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    background-image: url('assets/hero-bg.jpg'); /* Cần ảnh nền ở đây */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Lớp phủ tối màu nhẹ để chữ nổi bật hơn (nếu cần) */
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.2); 
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 60px;
+    margin: 0;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin-top: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+/* --- GALLERY SECTION --- */
+.gallery-section {
+    padding: 40px 15px;
+    background-color: #fff; /* Nền trắng quanh gallery */
+}
+
+.gallery-grid {
+    display: grid;
+    /* Chia làm 4 cột bằng nhau */
+    grid-template-columns: repeat(4, 1fr);
+    /* Khoảng cách giữa các ảnh */
+    gap: 20px; 
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px; /* Bo góc nhẹ cho đẹp */
+    display: block;
+}
+
+/* Item đầu tiên (bánh sừng bò) chiếm 2 hàng dọc */
+.item-large {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+}
+
+/* Các item còn lại tự động xếp vào lưới */
+.gallery-item {
+    height: 250px; /* Chiều cao cố định cho các ô nhỏ */
+}
+
+.item-large {
+    height: 520px; /* Chiều cao = 2 ô nhỏ + gap (250*2 + 20) */
+}
+
+/* --- FOOTER --- */
+.footer-area {
+    background-color: #333; /* Màu xám đậm */
+    color: #ccc;
+    padding: 40px 0;
+    font-size: 14px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.footer-col {
+    flex: 1;
+    padding: 0 15px;
+}
+
+.footer-col h3 {
+    color: white;
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Cột 1: Dịch vụ */
+.service-col {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-icon img {
+    width: 40px;
+    height: auto;
+    filter: invert(56%) sepia(68%) saturate(399%) hue-rotate(348deg) brightness(101%) contrast(98%); /* Chỉnh màu cam giả lập nếu ảnh là png trắng/đen, hoặc dùng ảnh màu gốc */
+}
+
+.service-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.service-col ul li {
+    margin-bottom: 8px;
+}
+
+.service-col ul li a {
+    color: #ccc; /* Màu chữ dịch vụ: vàng/cam nhạt */
+    text-decoration: none;
+}
+.service-col ul li a:hover {
+    color: white;
+}
+/* Style riêng cho các link Dịch vụ giống hình (màu cam nhạt) */
+.service-col ul li:nth-child(1) a,
+.service-col ul li:nth-child(2) a,
+.service-col ul li:nth-child(3) a {
+    color: #eebb99; 
+}
+
+
+/* Cột 2: Liên hệ */
+.contact-col p {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+/* Cột 3: Kết nối */
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    color: #ffa500; /* Màu cam cho icon */
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: white;
+}
+
+/* --- RESPONSIVE (Mobile) --- */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .menu {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr); /* Mobile hiện 2 cột */
+    }
+    
+    .item-large {
+        grid-column: 1 / -1; /* Ảnh lớn full chiều ngang trên mobile */
+        height: auto;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .service-col {
+        justify-content: center;
+    }
 }
